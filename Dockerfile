@@ -15,14 +15,12 @@ RUN npm install -g npm@10.8.3
 # Install dependencies
 RUN npm install
 
-# Install Prettier
-RUN npm install --save-dev prettier
 
-# Format .vue files using Prettier
-RUN npx prettier --write "src/**/*.vue"
 
 # Copy the rest of the application code
 COPY . .
+
+RUN npx prettier --write "src/**/*.{js,vue}"
 
 # Build the application
 RUN npm run build
